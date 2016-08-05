@@ -9273,9 +9273,6 @@ input:focus::-webkit-input-placeholder {
 .wig-jumbo-form .uk-form-large {
   margin-top: 0px;
 }
-#wig-calculator-results {
-  opacity: 0;
-}
 .results-visible {
   opacity: 1 !important;
   -webkit-transition: opacity 1.2s;
@@ -9520,4 +9517,13 @@ input:focus::-webkit-input-placeholder {
   .splash-slide-heading-under {
     font-size: 14px;
   }
+}
+
+
+/*Joe's additions*/
+.typeahead-list {
+  background:#8941a7;
+}
+.typeahead-list li {
+  padding-left:10px;
 }
