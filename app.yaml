@@ -1,0 +1,41 @@
+application: unmortgage-web
+version: 2
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /
+  script: index.php
+
+- url: /calculator.php
+  script: calculator.php
+
+- url: /intro.php
+  script: intro.php
+
+- url: /register.php
+  script: register.php
+
+- url: /thanks.php
+  script: thanks.php
+
+- url: /data
+  static_dir: data/
+
+
+- url: /dist/css
+  static_dir: dist/css/
+
+- url: /dist/img
+  static_dir: dist/img/
+
+- url: /dist/js
+  static_dir: dist/js/
+
+- url: /vendor/uikit/fonts
+  static_dir: vendor/uikit/fonts/

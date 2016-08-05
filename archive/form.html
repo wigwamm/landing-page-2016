@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html manifest="local.manifest" lang="en">
+<head>
+
+ <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>unmortgage question</title>
+  <meta name="description" content="Get more home for your money with an unmortgage">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-startup-image" href="images/splash.png" media="screen and (max-device-width: 320px)">
+  <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="images/splash@2x.png">
+
+  <meta name="format-detection" content="telephone=no">
+
+
+  <!-- Libraries
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.nice-select.js"></script>
+  <script src="js/jquery.mask.js"></script>
+  <script src="js/typeahead.bundle.js"></script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <!--<link rel="stylesheet" href="css/nice-select.css">-->
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon-sm.png">
+
+</head>
+
+  <!-- iOS Fixes
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<body>
+
+  <div id="nav" class="flex center outside horizontal">
+    <a href="/"><img class="home" src="images/home_logo.png"></img></a>
+    <!--<a href="/about">about us</a>
+    <a href="/faq">how it works</a>
+    <a href="/contact">contact us</a>-->
+  </div>
+
+  <div id="bg"></div>
+  <div id="form" class="flex vertical middle">
+      <h1>Let’s See What You Could Get</h1>
+
+      <form novalidate action="thanks" method="post">
+        <div id="group1" class="line">
+          <span class="copy">I would love to live in </span>
+              <input type="tel" class="textinput typeahead" name="location" id="location" value="" placeholder="Shoreditch, N1" maxlength="30" style="width:265px;">
+        </div>
+        <div id="group2" class="line" style="display:none;">
+          <span class="copy">My total income is &pound;</span>
+              <input type="tel" class="textinput money" name="income" id="income" value="" placeholder="" maxlength="6" style="width:125px; letter-spacing:1px;">
+            </br>
+        </div>
+
+        <div id="group3" class="line" style="display:none;">
+          <span class="copy">I am looking for a </span>
+          <select id="type" name="type" class="dropdown">
+            <option disabled selected></option>
+            <option>1 bedroom flat</option>
+            <option>2 bedroom flat</option>
+            <option>3 bedroom flat</option>
+          </select>
+        </div>
+      <div id="group4" class="line" style="display:none;">
+        </br>
+        <button type="submit" id="register" class="button">See What You’re Missing</button>
+      </div>
+
+      </div>
+
+      </form>
+
+      </div>
+
+      <script>
+      $(document).ready(function() {
+      $('select').niceSelect();
+      });
+      </script>
+
+      <script>
+
+      HTMLElement.prototype.changeValueDetection = function(){
+      var element=this;
+      var oldVal=element.value;
+      var GUID = function (){var S4 = function () {return(Math.floor(Math.random() * 0x10000).toString(16));};return (S4() + S4() + "-" +S4() + "-" +S4() + "-" +S4() + "-" +S4() + S4() + S4());};
+      var uiq="GUID-"+GUID();
+      if(window.changeValueDetectionEvents==undefined)window.changeValueDetectionEvents=new Event('changeValueDetection');
+      element.setAttribute("data-uiq",uiq);
+      window[uiq]=setInterval(function(){
+      if(element.value!=oldVal){
+      oldVal=element.value;element.setAttribute("value",oldVal);
+      element.dispatchEvent(window.changeValueDetectionEvents);
+      }
+      if(document.querySelectorAll("[data-uiq='"+uiq+"']").length==0){//clear interval, if element no exist
+      clearInterval(window[uiq]);
+      };
+      },100);
+      };
+
+
+      document.getElementById("location").changeValueDetection();//init observer
+      document.getElementById("location").addEventListener("changeValueDetection", function(){
+      document.getElementById("group2").setAttribute("style","display:inline");
+      });
+
+      document.getElementById("income").changeValueDetection();//init observer
+      document.getElementById("income").addEventListener("changeValueDetection", function(){
+      document.getElementById("group3").setAttribute("style","display:inline");
+      });
+
+      document.getElementById("type").changeValueDetection();//init observer
+      document.getElementById("type").addEventListener("changeValueDetection", function(){
+      document.getElementById("group4").setAttribute("style","display:inline");
+      document.getElementById("income").toLocaleString();
+      });
+
+
+      </script>
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+      $('.money').mask('000,000,000,000,000,000,000', {reverse: true});
+      });
+      </script>
+
+
+      <script>
+
+      jQuery("#register").prop('disabled', true);
+
+      var toValidate = jQuery('#location, #income, #rent, #bills, #savings'),
+      valid = false;
+      toValidate.keyup(function () {
+      if (jQuery(this).val().length > 0) {
+      jQuery(this).data('valid', true);
+      } else {
+      jQuery(this).data('valid', false);
+      }
+      toValidate.each(function () {
+      if (jQuery(this).data('valid') == true) {
+          valid = true;
+      } else {
+          valid = false;
+      }
+      });
+      if (valid === true) {
+      jQuery("#register").prop('disabled', false);
+      } else {
+      jQuery("#register").prop('disabled', true);
+      }
+      });
+
+      </script>
+
+
+
+  <div>
+
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var states = [
+  'Angel, EC1',
+  'Barbican, EC1',
+  'Clerkenwell, EC1',
+  'Farringdon, EC1',
+  'Finsbury, EC1',
+  'St Lukes, EC1',
+  'Aldgate, EC3',
+  'Whitechapel, E1',
+  'Shoreditch, N1',
+  'Bethnal Green, E2',
+
+];
+
+$('.typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(states)
+});
+</script>
+
+
+</body>
+</html>
